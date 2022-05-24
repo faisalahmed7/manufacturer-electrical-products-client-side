@@ -1,13 +1,17 @@
+
 import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
+
 const Login = () => {
+
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, getValues } = useForm();
 
 
 
@@ -19,7 +23,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     let signInError;
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,7 +35,7 @@ const Login = () => {
     }, [user, googleUser, from, navigate])
 
 
-    if (loading || googleLoading) {
+    if (loading || googleLoading || sending) {
         return <Loading></Loading>
     }
 
@@ -43,6 +47,22 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password)
 
     }
+
+    const resetPassword = async () => {
+
+        const email = getValues('email');
+        console.log(email);
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast.success('Sent email');
+
+        }
+        else {
+            toast.error('please enter your email')
+        }
+    }
+
+
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -55,6 +75,7 @@ const Login = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input
+
                                 type="email"
                                 placeholder="Your Email"
                                 className="input input-bordered w-full max-w-xs"
@@ -101,6 +122,7 @@ const Login = () => {
                         <input className='btn  w-full max-w-xs text-white bg-secondary' type="submit" value='Login' />
                     </form>
                     <p className='text-center'><small>New to BD ELECTRICAL? <Link className='text-primary' to='/signup'>Crete New Account</Link></small></p>
+                    <button onClick={resetPassword} className="btn  btn-link"><small>Forgot Password?</small></button>
                     <div className="divider">OR</div>
 
                     <button
