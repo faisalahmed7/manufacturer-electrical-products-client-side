@@ -121,7 +121,7 @@ const Login = () => {
                         {signInError}
                         <input className='btn  w-full max-w-xs text-white bg-secondary' type="submit" value='Login' />
                     </form>
-                    <p className='text-center'><small>New to BD ELECTRICAL? <Link className='text-primary' to='/signup'>Crete New Account</Link></small></p>
+                    <p className='text-center'><small>New to BD ELECTRICAL? <Link className='text-red-500' to='/signup'>Crete New Account</Link></small></p>
                     <button onClick={resetPassword} className="btn  btn-link"><small>Forgot Password?</small></button>
                     <div className="divider">OR</div>
 
