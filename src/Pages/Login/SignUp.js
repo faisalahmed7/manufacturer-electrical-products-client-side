@@ -1,8 +1,9 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -13,7 +14,26 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    let signUpError;
+    const navigate = useNavigate()
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+    if (error) {
+        signUpError = <p className='text-red-500 mb-4'><small>{error?.message}</small></p>
+    }
+    if (user) {
+        console.log(user);
+    }
     const onSubmit = data => {
+
+
+        if (data.password === data.confirmPassword) {
+            createUserWithEmailAndPassword(data.email, data.password);
+            navigate('/')
+        }
 
 
     }
@@ -115,6 +135,7 @@ const SignUp = () => {
                                 {errors.confirmPassword?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.confirmPassword.message}</span>}
                             </label>
                         </div>
+                        {signUpError}
 
                         <input className='btn  w-full max-w-xs text-white' type="submit" value='Sign Up' />
                     </form>
