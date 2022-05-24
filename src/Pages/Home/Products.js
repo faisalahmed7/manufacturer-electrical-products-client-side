@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useProducts from '../../hooks/useProducts';
 import SingleProductDetails from './SingleProductDetails';
 
 const Products = () => {
 
-    const [products, setProducts] = useState([])
-    useEffect(() => {
+    const [products] = useProducts()
+    const newProducts = [...products]
+    const finalProducts = newProducts.slice(0, 6)
 
-
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-            })
-
-    }, [])
 
 
     return (
@@ -24,7 +18,7 @@ const Products = () => {
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
-                    products.map(product => <SingleProductDetails
+                    finalProducts.map(product => <SingleProductDetails
                         key={product._id}
                         product={product}>
 
