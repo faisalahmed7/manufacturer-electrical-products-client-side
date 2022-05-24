@@ -1,9 +1,17 @@
 import React from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const onSubmit = data => {
 
@@ -99,7 +107,7 @@ const SignUp = () => {
                                     },
                                     minLength: {
                                         value: 6,
-                                        message: 'Must be matched '
+                                        message: 'Password must be matched '
                                     }
                                 })} />
                             <label className="label">
