@@ -35,6 +35,9 @@ const SignUp = () => {
             createUserWithEmailAndPassword(data.email, data.password);
             navigate('/')
         }
+        else {
+            alert('Please Provide the same password')
+        }
 
 
     }
@@ -104,8 +107,8 @@ const SignUp = () => {
                                         message: 'Password is required'
                                     },
                                     minLength: {
-                                        value: 6,
-                                        message: 'Must be 6 characters or more '
+                                        value: 8,
+                                        message: 'Must be 8 characters or more '
                                     }
                                 })} />
                             <label className="label">
@@ -127,7 +130,7 @@ const SignUp = () => {
                                         message: 'Re-type Your Password'
                                     },
                                     minLength: {
-                                        value: 6,
+                                        value: 8,
                                         message: 'Password must be matched '
                                     }
                                 })} />
