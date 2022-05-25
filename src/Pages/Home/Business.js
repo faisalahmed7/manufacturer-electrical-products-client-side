@@ -44,16 +44,16 @@ const Business = () => {
             </div>
             <div className='text-center my-8'>
 
-                <label for="my-modal-6" class="btn btn-primary mb-8">Contact Us</label>
+                <label for="my-modal-6" className="btn btn-primary mb-8">Contact Us</label>
 
 
-                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Do You Stay On This Pages</h3>
+                <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Do You Stay On This Pages</h3>
 
-                        <div class="modal-action">
-                            <label for="my-modal-6" class="btn">Yes</label>
+                        <div className="modal-action">
+                            <label for="my-modal-6" className="btn">Yes</label>
                         </div>
                     </div>
                 </div>

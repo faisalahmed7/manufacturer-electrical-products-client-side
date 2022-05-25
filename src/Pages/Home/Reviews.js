@@ -12,7 +12,7 @@ const Reviews = () => {
     const reviews = [
         {
             _id: 1,
-            name: 'Henry Nicholes',
+            name: 'Henry Alison',
             review: 'There are very much about the product shipping. Like it very much.',
             location: 'California',
             img: people1,
@@ -28,32 +28,32 @@ const Reviews = () => {
         },
         {
             _id: 3,
-            name: 'Zara Nicholes',
-            review: 'Smooth website to search my desired products',
+            name: 'Devon Edward',
+            review: 'Smooth website to search my desired products and quality is good enough',
             location: 'San-Francisco',
             img: people3,
             rating: 3.5
         },
         {
             _id: 4,
-            name: 'Zara Nicholes',
-            review: 'Smooth website to search my desired products',
+            name: 'Christopher Mak',
+            review: 'Good behavior while facing problem on purchasing. Always like this ',
             location: 'San-Francisco',
             img: people4,
             rating: 3.5
         },
         {
             _id: 5,
-            name: 'Zara Nicholes',
-            review: 'Smooth website to search my desired products',
+            name: 'Madison Lily',
+            review: 'Should produce more products as soon as possible while the products will be sold out',
             location: 'San-Francisco',
             img: people5,
             rating: 3.5
         },
         {
             _id: 6,
-            name: 'Zara Nicholes',
-            review: 'Smooth website to search my desired products',
+            name: 'Aldwin  Harvey',
+            review: 'Shipping Cost should be reduce more while purchasing a big amount of products',
             location: 'San-Francisco',
             img: people6,
             rating: 3.5

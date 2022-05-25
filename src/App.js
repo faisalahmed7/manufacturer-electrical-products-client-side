@@ -9,16 +9,17 @@ import Blogs from "./Pages/Blogs/Blogs";
 import SignUp from "./Pages/Login/SignUp";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import Products from "./Pages/Home/Products";
-import SingleProductId from "./Pages/Home/SingleProductId";
+import Purchase from "./Pages/Home/Purchase";
+
 
 function App() {
   return (
-    <div className="max-w-7xl mx-auto ">
+    <div >
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-        <Route path="/purchase/:id" element={<RequireAuth><SingleProductId></SingleProductId></RequireAuth>}></Route>
+        <Route path="/purchase/:id" element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
 
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/products" element={<Products></Products>}></Route>
