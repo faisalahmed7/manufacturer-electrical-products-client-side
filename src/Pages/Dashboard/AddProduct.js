@@ -1,15 +1,15 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { toast } from 'react-toastify';
-import Loading from '../Shared/Loading';
+import auth from '../../firebase.init';
+
 
 const AddProduct = () => {
-    const { data: products, isLoading } = useQuery('newProduct', () => fetch(`http://localhost:5000/product`).then(res => res.json()));
+
+    const [user] = useAuthState(auth)
 
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
 
     const handleAddNewProduct = e => {
         e.preventDefault()
@@ -36,8 +36,13 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(inserted => {
-                console.log('Product', inserted);
-                e.target.reset();
+                if (inserted.insertedId) {
+                    toast.success('Doctor is added successfully');
+                    e.target.reset();
+                }
+                else {
+                    toast.error('Failed to add a doctor')
+                }
             })
 
     }
@@ -50,14 +55,14 @@ const AddProduct = () => {
                         <div className="card-body">
                             <h2 className="text-center font-bold text-xl">Add Product</h2>
                             <form onSubmit={handleAddNewProduct}>
-                                <input type="text" name="name" placeholder='Product Name' className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="manufacturerName" placeholder='Manufacturer Name' className='input input-bordered w-full max-w-xs ' />
-                                <input type="text" name="quantity" placeholder='Total Quantity' className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="minQuantity" placeholder='Minimum Order Quantity' className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="price" placeholder='Price Per Unit' className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="description" placeholder='Product Description' className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="image" placeholder='Product Image' className='input input-bordered w-full max-w-xs' />
-                                <input type="email" name="email" placeholder='Your Email' className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="name" placeholder='Product Name' required className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="manufacturerName" placeholder='Manufacturer Name' required className='input input-bordered w-full max-w-xs ' />
+                                <input type="text" name="quantity" placeholder='Total Quantity' required className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="minQuantity" placeholder='Minimum Order Quantity' required className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="price" placeholder='Price Per Unit' required className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="description" placeholder='Product Description' required className='input input-bordered w-full max-w-xs' />
+                                <input type="text" name="image" placeholder='Product Image' required className='input input-bordered w-full max-w-xs' />
+                                <input type="email" name="email" value={user.email} className='input input-bordered w-full max-w-xs' />
                                 <input type="submit" value="Add Product" className='input input-bordered btn btn-primary w-full max-w-xs' />
                             </form>
 
