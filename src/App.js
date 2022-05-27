@@ -13,8 +13,10 @@ import Purchase from "./Pages/Home/Purchase";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Error from "./Pages/Shared/Error";
 import MyOrders from "./Pages/Dashboard/MyOrders";
-import MyReviews from "./Pages/Dashboard/MyReviews";
+
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import AddReview from "./Pages/Dashboard/AddReview";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 
 
 function App() {
@@ -26,9 +28,11 @@ function App() {
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/purchase/:id" element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
-          <Route index element={<MyOrders></MyOrders>}></Route>
-          <Route path="review" element={<MyReviews></MyReviews>}></Route>
-          <Route path="profile" element={<MyProfile></MyProfile>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
+          <Route path="review" element={<AddReview></AddReview>}></Route>
+          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/products" element={<Products></Products>}></Route>
