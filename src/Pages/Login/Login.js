@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 
 
@@ -28,12 +29,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user || googleUser)
+
     useEffect(() => {
-        if (user || googleUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, googleUser, from, navigate])
-
+    }, [token, from, navigate])
 
     if (loading || googleLoading || sending) {
         return <Loading></Loading>
