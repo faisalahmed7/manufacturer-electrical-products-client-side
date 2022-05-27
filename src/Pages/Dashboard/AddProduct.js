@@ -55,15 +55,15 @@ const AddProduct = () => {
                         <div className="card-body">
                             <h2 className="text-center font-bold text-xl">Add Product</h2>
                             <form onSubmit={handleAddNewProduct}>
-                                <input type="text" name="name" placeholder='Product Name' required className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="manufacturerName" placeholder='Manufacturer Name' required className='input input-bordered w-full max-w-xs ' />
-                                <input type="text" name="quantity" placeholder='Total Quantity' required className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="minQuantity" placeholder='Minimum Order Quantity' required className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="price" placeholder='Price Per Unit' required className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="description" placeholder='Product Description' required className='input input-bordered w-full max-w-xs' />
-                                <input type="text" name="image" placeholder='Product Image' required className='input input-bordered w-full max-w-xs' />
-                                <input type="email" name="email" value={user.email} className='input input-bordered w-full max-w-xs' />
-                                <input type="submit" value="Add Product" className='input input-bordered btn btn-primary w-full max-w-xs' />
+                                <input type="text" name="name" placeholder='Product Name' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="text" name="manufacturerName" placeholder='Manufacturer Name' required className='input input-bordered w-full max-w-xs mb-2 ' />
+                                <input type="text" name="quantity" placeholder='Total Quantity' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="text" name="minQuantity" placeholder='Minimum Order Quantity' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="text" name="price" placeholder='Price Per Unit' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="text" name="description" placeholder='Product Description' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="text" name="image" placeholder='Product Image' required className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="email" name="email" value={user.email} className='input input-bordered w-full max-w-xs mb-2' />
+                                <input type="submit" value="Add Product" className='input input-bordered btn btn-primary w-full max-w-xs mb-2' />
                             </form>
 
                         </div>

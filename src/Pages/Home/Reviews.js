@@ -1,65 +1,20 @@
-import React from 'react';
-import people1 from '../../asset/images/people1.jpg'
-import people2 from '../../asset/images/people2.jpg'
-import people3 from '../../asset/images/people3.jpg'
-import people4 from '../../asset/images/people4.jpg'
-import people5 from '../../asset/images/people5.jpg'
-import people6 from '../../asset/images/people6.jpg'
+import React, { useEffect, useState } from 'react';
+
 import quote from '../../asset/quote.svg'
 import Review from './Review';
 
 const Reviews = () => {
-    const reviews = [
-        {
-            _id: 1,
-            name: 'Henry Alison',
-            review: 'There are very much about the product shipping. Like it very much.',
-            location: 'California',
-            img: people1,
-            rating: 4.5
-        },
-        {
-            _id: 2,
-            name: 'Sara Nicholes',
-            review: 'Quality Of their are good as displayed on the screen. Keep it up.',
-            location: 'Washington DC',
-            img: people2,
-            rating: 4
-        },
-        {
-            _id: 3,
-            name: 'Devon Edward',
-            review: 'Smooth website to search my desired products and quality is good enough',
-            location: 'San-Francisco',
-            img: people3,
-            rating: 3.5
-        },
-        {
-            _id: 4,
-            name: 'Christopher Mak',
-            review: 'Good behavior while facing problem on purchasing. Always like this ',
-            location: 'San-Francisco',
-            img: people4,
-            rating: 3.5
-        },
-        {
-            _id: 5,
-            name: 'Madison Lily',
-            review: 'Should produce more products as soon as possible while the products will be sold out',
-            location: 'San-Francisco',
-            img: people5,
-            rating: 3.5
-        },
-        {
-            _id: 6,
-            name: 'Aldwin  Harvey',
-            review: 'Shipping Cost should be reduce more while purchasing a big amount of products',
-            location: 'San-Francisco',
-            img: people6,
-            rating: 3.5
-        },
+    const [reviews, setReviews] = useState([])
+    useEffect(() => {
+        const url = 'http://localhost:5000/review'
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setReviews(data))
 
-    ]
+
+
+
+    }, [])
 
     return (
         <section className='my-20'>
