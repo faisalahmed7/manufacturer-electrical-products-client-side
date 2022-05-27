@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Error = () => {
+const MyOrders = () => {
     return (
         <div>
-            <h2>Not Found</h2>
+            <h2>orders</h2>
         </div>
     );
 };
 
-export default Error;
+export default MyOrders;

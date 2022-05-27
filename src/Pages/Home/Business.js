@@ -44,7 +44,7 @@ const Business = () => {
             </div>
             <div className='text-center my-8'>
 
-                <label for="my-modal-6" className="btn btn-primary mb-8">Contact Us</label>
+                <label htmlFor="my-modal-6" className="btn btn-primary mb-8">Contact Us</label>
 
 
                 <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -53,7 +53,7 @@ const Business = () => {
                         <h3 className="font-bold text-lg">Do You Stay On This Pages</h3>
 
                         <div className="modal-action">
-                            <label for="my-modal-6" className="btn">Yes</label>
+                            <label htmlFor="my-modal-6" className="btn">Yes</label>
                         </div>
                     </div>
                 </div>
