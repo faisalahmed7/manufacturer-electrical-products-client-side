@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import quote from '../../asset/quote.svg'
+import useReviews from '../../hooks/useReviews';
 import Review from './Review';
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState([])
-    useEffect(() => {
-        const url = 'http://localhost:5000/review'
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setReviews(data))
-
-
-
-
-    }, [])
+    const [reviews] = useReviews()
+    const newReviews = [...reviews]
+    const reverseReviews = newReviews.reverse()
 
     return (
         <section className='my-20'>
@@ -30,7 +23,7 @@ const Reviews = () => {
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
 
                 {
-                    reviews.map(review => <Review
+                    reverseReviews.map(review => <Review
                         key={review._id}
                         review={review}>
 
