@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from '../Shared/Footer';
 import Banner from './Banner';
-import Business from './Business';
+import BusinessDetails from './BusinessDetails';
+import Countdown from './Countdown';
 import GetStarted from './GetStarted';
 import Products from './Products';
 import Reviews from './Reviews';
@@ -13,7 +14,9 @@ const Home = () => {
             <Banner></Banner>
             <Products></Products>
             <GetStarted></GetStarted>
-            <Business></Business>
+            <Countdown></Countdown>
+            <BusinessDetails></BusinessDetails>
+
             <Reviews></Reviews>
             <Footer></Footer>
         </div>

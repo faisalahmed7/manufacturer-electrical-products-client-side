@@ -9,8 +9,8 @@ const GetStarted = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5 text-xl">Do You Want To See UpComing Products, Click On the Button</p>
-                        <Link to='/products'><button className="btn btn-primary">SEE ALL</button></Link>
+                        <p className="mb-5 text-xl">Do You Want To See the UpComing Products, Click On the Button</p>
+                        <Link to='/upcomingProducts'><button className="btn btn-primary">SEE ALL</button></Link>
                     </div>
                 </div>
             </div>

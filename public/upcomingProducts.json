@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "1",
+        "name": "C.K 5Pc Multi Pipe Cutter Set",
+        "manufacturerName": "C.k",
+        "price": "50",
+        "description": "This Multi-Cutter set from C.K Tools feature a heavy-duty aluminium body, which offers a strong and durable long-term portable solution for any contractor.  This product has an integral razor sharp stainless steel blade, which makes for effortless cutting of PVC conduit, blue water mains, plastic pipes, rubber hoses, pneumatic pipes, electrical sleeving, and much more.",
+        "image": "https://i.ibb.co/zfZdsCL/C-K-150mm-Mini-Hacksaw.jpg"
+    },
+    {
+        "_id": "2",
+        "name": "C.K 190mm Cable & Wire Rope Cutters",
+        "manufacturerName": "C.k",
+        "price": "95",
+        "description": "The C.K Tools Cable Cutter is a must have accessory for both Electricians and DIY enthusiasts for cutting cable in an efficient and effortless manner.  Manufactured from a special drop forged high quality alloy steel construction with razor sharp, anglular hardened Cutting edges for outstanding, efficient and long term cutting performance. ",
+        "image": "https://i.ibb.co/SRyT94T/1569.jpg"
+    },
+    {
+        "_id": "3",
+        "name": "C.KCable Stripper Plastic Tube Cutting Tool ",
+        "manufacturerName": "C.K",
+        "price": "47",
+        "description": "Effortlessly cuts the outer insulation sheath from cables and wires from 6 to 28mm Ø.  The cutting blade automatically changes from circular to longitudinal mode for the safe damage-free removal of insulation without the use of additional cutting tools. Cuts plastic tubes up to 25mm Ø. (1 inch) The replaceable hardened steel blade has an adjustable cutting depth making this a versatile tool.",
+        "image": "https://i.ibb.co/drRPHpy/6349.jpg"
+    }
+]
