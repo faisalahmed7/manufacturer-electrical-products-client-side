@@ -8,7 +8,7 @@ import Login from "./Pages/Login/Login";
 import Blogs from "./Pages/Blogs/Blogs";
 import SignUp from "./Pages/Login/SignUp";
 import RequireAuth from "./Pages/Login/RequireAuth";
-import Products from "./Pages/Home/Products";
+
 import Purchase from "./Pages/Home/Purchase";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Error from "./Pages/Shared/Error";
@@ -21,6 +21,7 @@ import RequireAdmin from "./Pages/Login/RequireAdmin";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import UpcominProducts from "./Pages/Home/UpcominProducts";
+import MyPortfolio from "./Pages/MyPortfolio";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/portfolio" element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/purchase/:id" element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
