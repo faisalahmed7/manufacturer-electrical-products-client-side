@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
     const { price, client, clientName, _id } = order;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://obscure-spire-95539.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

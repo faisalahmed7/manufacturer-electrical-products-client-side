@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import ManageAllDetails from './ManageAllDetails';
 
 const ManageallOrders = () => {
-    const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/order', {
+    const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/order', {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         }
