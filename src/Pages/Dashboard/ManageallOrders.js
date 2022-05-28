@@ -4,10 +4,10 @@ import Loading from '../Shared/Loading';
 import ManageAllDetails from './ManageAllDetails';
 
 const ManageallOrders = () => {
-    const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/order', {
-        // headers: {
-        //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        // }
+    const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/order', {
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        }
 
     }).then(res => res.json()));
 
@@ -18,7 +18,7 @@ const ManageallOrders = () => {
     return (
         <div>
 
-            <h2 className='text-2xl text-center text-red-500 mb-8 mt-8'>All orders: {allOrders.length}</h2>
+            <h2 className='text-2xl text-center text-red-500 mb-8 mt-8'>All Orders: {allOrders.length}</h2>
 
             <div class="overflow-x-auto">
                 <table class="table w-full">

@@ -11,14 +11,14 @@ const stripePromise = loadStripe('pk_test_51L4KNgLkOaRwZwQozaKI13c9tEv6CHeHWNlmv
 
 const Payment = () => {
     const { id } = useParams()
-    const url = `https://obscure-spire-95539.herokuapp.com/order/${id}`;
+    const url = `http://localhost:5000/order/${id}`;
 
     const { data: order, isLoading } = useQuery(['order', id], () => fetch(url, {
         method: 'GET',
-        // headers: {
-        //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
 
-        // }
+        }
     }).then(res => res.json()));
 
     if (isLoading) {

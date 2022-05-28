@@ -14,9 +14,9 @@ const MyOrders = () => {
         if (user) {
             fetch(`https://obscure-spire-95539.herokuapp.com/order?client=${user.email}`, {
                 method: 'GET',
-                // headers: {
-                //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                // }
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
             })
                 .then(res => {
                     console.log('res', res);
