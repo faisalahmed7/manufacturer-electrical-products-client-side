@@ -26,7 +26,7 @@ const AddProduct = () => {
         }
 
 
-        fetch('http://localhost:5000/product', {
+        fetch('https://obscure-spire-95539.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

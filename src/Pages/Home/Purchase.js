@@ -17,44 +17,57 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://obscure-spire-95539.herokuapp.com/product/${id}`
         fetch(url)
             .then(res => res.json()
                 .then(data => setProduct(data)))
     }, [])
 
+    let minimumQuantity = 200;
 
 
     const handleBuyNow = e => {
         e.preventDefault();
         let inputQuantity = e.target.quantity.value;
+
+
         const order = {
             productId: _id,
             product: name,
             clientName: user.displayName,
             client: user.email,
+            price,
             quantity: inputQuantity,
             address: e.target.address.value,
             phone: e.target.phone.value,
         };
+        if (inputQuantity < minimumQuantity) {
+            toast.error(`Minimum Order 200 pcs`);
+            e.target.reset();
+        }
+        else if (inputQuantity > quantity) {
+            toast.error(`Maximum  Order not more than available quantity`);
+            e.target.reset();
+        }
+
+        else {
+            fetch("https://obscure-spire-95539.herokuapp.com/order", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(order),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    toast.success("order placed successfully");
+                    e.target.reset();
 
 
-        fetch("http://localhost:5000/order", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(order),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                toast.success("order placed successfully");
-                e.target.reset();
+                });
 
-
-            });
-
+        }
 
 
 
@@ -107,6 +120,14 @@ const Purchase = () => {
                                     readOnly
                                     disabled
                                     value={user?.email || ""}
+                                    className="input mb-2  input-bordered w-full max-w-xs"
+                                />
+                                <input
+                                    type="text"
+                                    name="availableQuantity"
+                                    readOnly
+                                    disabled
+                                    value={product?.quantity}
                                     className="input mb-2  input-bordered w-full max-w-xs"
                                 />
                                 <input

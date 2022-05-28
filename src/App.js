@@ -22,6 +22,8 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import UpcominProducts from "./Pages/Home/UpcominProducts";
 import MyPortfolio from "./Pages/MyPortfolio";
+import Payment from "./Pages/Dashboard/Payment";
+import ManageallOrders from "./Pages/Dashboard/ManageallOrders";
 
 
 function App() {
@@ -37,9 +39,11 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="makeAdmin" element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
           <Route path="addProduct" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
           <Route path="manageProduct" element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
+          <Route path="manageOrder" element={<RequireAdmin><ManageallOrders></ManageallOrders></RequireAdmin>}></Route>
 
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>

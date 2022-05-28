@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
@@ -12,7 +12,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?client=${user.email}`, {
+            fetch(`https://obscure-spire-95539.herokuapp.com/order?client=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -47,6 +47,7 @@ const MyOrders = () => {
                             <th>Name</th>
                             <th>Product Name</th>
                             <th>Order Quantity</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +58,13 @@ const MyOrders = () => {
                                     <td>{order.clientName}</td>
                                     <td>{order.product}</td>
                                     <td>{order.quantity}</td>
+                                    <td>
+                                        {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                                        {(order.price && order.paid) && <div>
+                                            <p><span className='text-success'>Paid</span></p>
+                                            <p>Transaction id: <span className='text-success'>{order.transactionId}</span></p>
+                                        </div>}
+                                    </td>
                                 </tr>)
                         }
 

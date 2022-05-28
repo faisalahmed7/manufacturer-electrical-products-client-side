@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const ProductRow = ({ product, index, refetch }) => {
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://obscure-spire-95539.herokuapp.com/product/${id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,

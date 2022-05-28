@@ -6,7 +6,7 @@ const useProducts = () => {
     useEffect(() => {
 
 
-        fetch('http://localhost:5000/product')
+        fetch('https://obscure-spire-95539.herokuapp.com/product')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);

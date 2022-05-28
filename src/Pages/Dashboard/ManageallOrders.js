@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
-import ProductRow from './ProductRow';
+import ManageAllDetails from './ManageAllDetails';
 
-const ManageProducts = () => {
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/product', {
+const ManageallOrders = () => {
+    const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/order', {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         }
@@ -18,7 +18,7 @@ const ManageProducts = () => {
     return (
         <div>
 
-            <h2 className='text-2xl text-center text-red-500 mb-8 mt-8'>All product: {products.length}</h2>
+            <h2 className='text-2xl text-center text-red-500 mb-8 mt-8'>All orders: {allOrders.length}</h2>
 
             <div class="overflow-x-auto">
                 <table class="table w-full">
@@ -26,7 +26,7 @@ const ManageProducts = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Avatar</th>
+
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Action</th>
@@ -34,16 +34,16 @@ const ManageProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((product, index) => <ProductRow
+                            allOrders.map((order, index) => <ManageAllDetails
 
-                                key={product._key}
-                                product={product}
+                                key={order._key}
+                                order={order}
                                 index={index}
                                 refetch={refetch}
 
                             >
 
-                            </ProductRow>)
+                            </ManageAllDetails>)
                         }
                     </tbody>
                 </table>
@@ -53,4 +53,4 @@ const ManageProducts = () => {
     );
 };
 
-export default ManageProducts;
+export default ManageallOrders;
