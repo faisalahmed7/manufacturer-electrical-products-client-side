@@ -1,6 +1,6 @@
 import React from 'react';
 
-import quote from '../../asset/quote.svg'
+
 import useReviews from '../../hooks/useReviews';
 import Review from './Review';
 

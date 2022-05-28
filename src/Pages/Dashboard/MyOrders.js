@@ -19,7 +19,7 @@ const MyOrders = () => {
                 }
             })
                 .then(res => {
-                    console.log('res', res);
+
                     if (res.status === 401 || res.status === 403) {
                         signOut(auth);
                         localStorage.removeItem('accessToken')
@@ -38,8 +38,8 @@ const MyOrders = () => {
         <div>
             <h2>orders: {orders.length}</h2>
 
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
 
                     <thead>
                         <tr>
@@ -53,7 +53,7 @@ const MyOrders = () => {
                     <tbody>
                         {
                             orders.map((order, index) =>
-                                <tr>
+                                <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>{order.clientName}</td>
                                     <td>{order.product}</td>
@@ -63,6 +63,7 @@ const MyOrders = () => {
                                         {(order.price && order.paid) && <div>
                                             <p><span className='text-success'>Paid</span></p>
                                             <p>Transaction id: <span className='text-success'>{order.transactionId}</span></p>
+
                                         </div>}
                                     </td>
                                 </tr>)

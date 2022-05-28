@@ -45,10 +45,10 @@ const Purchase = () => {
             toast.error(`Minimum Order 200 pcs`);
             e.target.reset();
         }
-        else if (inputQuantity > quantity) {
-            toast.error(`Maximum  Order not more than available quantity`);
-            e.target.reset();
-        }
+        // else if (inputQuantity > quantity) {
+        //     toast.error(`Maximum  Order not more than available quantity`);
+        //     e.target.reset();
+        // }
 
         else {
             fetch("https://obscure-spire-95539.herokuapp.com/order", {
@@ -60,7 +60,7 @@ const Purchase = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
+
                     toast.success("order placed successfully");
                     e.target.reset();
 

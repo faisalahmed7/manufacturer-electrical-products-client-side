@@ -36,8 +36,8 @@ const MyProfile = () => {
                                     <input type="text" name="location" placeholder='Your City' required className='input input-bordered w-full max-w-xs mb-2 ' />
                                     <input type="text" name="phoneNumber" placeholder='Your Phone/Mobile No.' required className='input input-bordered w-full max-w-xs mb-2' />
                                     <input type="text" name="linkedIn" placeholder='Your Linked In Profile' required className='input input-bordered w-full max-w-xs mb-2' />
-                                    <input type="text" name="name" value={user.displayName} className='input input-bordered w-full max-w-xs mb-2' />
-                                    <input type="email" name="email" value={user.email} className='input input-bordered w-full max-w-xs mb-2' />
+                                    <input type="text" name="name" className='input input-bordered w-full max-w-xs mb-2' />
+                                    <input type="email" name="email" className='input input-bordered w-full max-w-xs mb-2' />
                                     <input type="submit" value="Update" className='input input-bordered btn btn-primary w-full max-w-xs mb-2' />
                                 </form>
 

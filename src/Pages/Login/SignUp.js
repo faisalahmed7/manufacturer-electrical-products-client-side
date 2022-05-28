@@ -37,7 +37,7 @@ const SignUp = () => {
         if (data.password === data.confirmPassword) {
             await createUserWithEmailAndPassword(data.email, data.password);
             await updateProfile({ displayName: data.name });
-            console.log('update done');
+
         }
         else {
             alert('Please Provide the same password')

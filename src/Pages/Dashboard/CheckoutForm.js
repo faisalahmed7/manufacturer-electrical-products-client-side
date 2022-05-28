@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CheckoutForm = ({ order }) => {
+const CheckoutForm = ({ payOrder }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -10,15 +10,16 @@ const CheckoutForm = ({ order }) => {
     const [transactionId, setTransactionId] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const { price, client, clientName, _id } = order;
+
+
+    const { price, client, clientName, _id } = payOrder;
 
     useEffect(() => {
-        fetch('https://obscure-spire-95539.herokuapp.com/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-
             },
             body: JSON.stringify({ price })
         })
@@ -31,27 +32,27 @@ const CheckoutForm = ({ order }) => {
 
     }, [price])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
 
         if (!stripe || !elements) {
             return;
         }
 
-        const card = elements.getElement(CardElement)
+        const card = elements.getElement(CardElement);
 
-        if (card === null) {
+        if (card == null) {
             return;
         }
-
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
-            card
+            card,
         });
 
         setCardError(error?.message || '')
-        setSuccess('');
-        setLoading(true)
+        setSuccess('')
+        setLoading(true);
 
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -66,42 +67,38 @@ const CheckoutForm = ({ order }) => {
             },
         );
 
-
         if (intentError) {
             setCardError(intentError?.message);
-            setLoading(false);
+            setLoading(false)
+
         }
         else {
             setCardError('');
-            setTransactionId(paymentIntent.id);
+            setTransactionId(paymentIntent.id)
             console.log(paymentIntent);
-            setSuccess('your Payment is completed');
+            setSuccess('Your Payment is completed')
+
+
 
             const payment = {
-                order: _id,
+                appointment: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://obscure-spire-95539.herokuapp.com/create-payment-intent/order/${_id}`, {
+            fetch(`http://localhost:5000/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
-            })
-                .then(res => res.json())
+            }).then(res => res.json())
                 .then(data => {
-
                     setLoading(false);
                     console.log(data);
                 })
 
         }
-
     }
-
-
-
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -121,7 +118,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-secondary btn-sm text-white mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
+                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
@@ -134,6 +131,9 @@ const CheckoutForm = ({ order }) => {
                     <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
                 </div>
             }
+
+
+
         </>
     );
 };

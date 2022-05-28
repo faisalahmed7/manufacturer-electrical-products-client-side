@@ -12,7 +12,7 @@ const ProductRow = ({ product, index, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data.deletedCount) {
                     toast.success(`${product.name}, is deleted`)
                     refetch()
@@ -23,14 +23,14 @@ const ProductRow = ({ product, index, refetch }) => {
     return (
         <tr>
             <th>{index + 1}</th>
-            <td><div class="avatar">
-                <div class="w-8 rounded">
+            <td><div className="avatar">
+                <div className="w-8 rounded">
                     <img src={product.image} alt={product.name} />
                 </div>
             </div></td>
             <td>{product.name}</td>
             <td>{product.quantity}</td>
-            <td><button onClick={() => handleDelete(product._id)} class="btn btn-xs btn-error text-white">Delete</button></td>
+            <td><button onClick={() => handleDelete(product._id)} className="btn btn-xs btn-error text-white">Delete</button></td>
         </tr>
     );
 };

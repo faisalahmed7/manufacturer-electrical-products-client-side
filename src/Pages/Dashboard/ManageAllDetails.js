@@ -12,7 +12,7 @@ const ManageAllDetails = ({ order, refetch, index }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data.deletedCount) {
                     toast.success(`${order.product}, is deleted`)
                     refetch()
@@ -27,7 +27,7 @@ const ManageAllDetails = ({ order, refetch, index }) => {
 
             <td>{order.product}</td>
             <td>{order.quantity}</td>
-            <td><button onClick={() => handleDelete(order._id)} class="btn btn-xs btn-error text-white">Delete</button></td>
+            <td><button onClick={() => handleDelete(order._id)} className="btn btn-xs btn-error text-white">Delete</button></td>
         </tr>
     );
 };

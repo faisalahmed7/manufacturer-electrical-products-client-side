@@ -20,8 +20,8 @@ const ManageallOrders = () => {
 
             <h2 className='text-2xl text-center text-red-500 mb-8 mt-8'>All Orders: {allOrders.length}</h2>
 
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
 
                     <thead>
                         <tr>

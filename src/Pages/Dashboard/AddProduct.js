@@ -37,11 +37,11 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {
-                    toast.success('Doctor is added successfully');
+                    toast.success('Product is added successfully');
                     e.target.reset();
                 }
                 else {
-                    toast.error('Failed to add a doctor')
+                    toast.error('Failed to add product')
                 }
             })
 

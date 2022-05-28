@@ -6,7 +6,7 @@ const Products = () => {
 
     const [products] = useProducts()
     const newProducts = [...products]
-    const finalProducts = newProducts.slice(0, 9)
+    const finalProducts = newProducts.slice(-6)
 
 
 
