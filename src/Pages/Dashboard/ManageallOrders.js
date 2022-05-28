@@ -5,9 +5,9 @@ import ManageAllDetails from './ManageAllDetails';
 
 const ManageallOrders = () => {
     const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/order', {
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        }
+        // headers: {
+        //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        // }
 
     }).then(res => res.json()));
 

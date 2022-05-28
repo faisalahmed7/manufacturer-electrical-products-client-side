@@ -15,10 +15,10 @@ const Payment = () => {
 
     const { data: order, isLoading } = useQuery(['order', id], () => fetch(url, {
         method: 'GET',
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        // headers: {
+        //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
 
-        }
+        // }
     }).then(res => res.json()));
 
     if (isLoading) {
