@@ -81,7 +81,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://obscure-spire-95539.herokuapp.com/create-payment-intent/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
