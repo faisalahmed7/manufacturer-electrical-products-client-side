@@ -1,19 +1,21 @@
 import React from "react";
-
 import { toast } from "react-toastify";
 
-const DeleteOrder = ({ deleteOrder, refetch, setDeleteOrder }) => {
-    const { _id } = deleteOrder;
+const DeleteModal = ({ deleteProduct, refetch, setDeleteProduct }) => {
+    const { name, _id } = deleteProduct;
     const handleDelete = (id) => {
-        fetch(`https://obscure-spire-95539.herokuapp.com/order/${id}`, {
+        fetch(`https://obscure-spire-95539.herokuapp.com/product/${id}`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 if (data.deletedCount) {
-                    toast.success("order is deleted");
-                    setDeleteOrder(null);
+                    toast.success(` ${name} is deleted`);
+                    setDeleteProduct(null);
                     refetch();
                 }
             });
@@ -24,9 +26,11 @@ const DeleteOrder = ({ deleteOrder, refetch, setDeleteOrder }) => {
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
                     <h3 class="font-bold text-lg text-red-500">
-                        Are you sure you want to delete order?
+                        Are you sure you want to delete ${name}
                     </h3>
-                    <p class="py-4">Once you delete an order you can not retrieve later</p>
+                    <p class="py-4">
+                        Once you delete a Product you can not retrive later
+                    </p>
                     <div class="modal-action">
                         <button
                             onClick={() => handleDelete(_id)}
@@ -44,4 +48,4 @@ const DeleteOrder = ({ deleteOrder, refetch, setDeleteOrder }) => {
     );
 };
 
-export default DeleteOrder;
+export default DeleteModal;

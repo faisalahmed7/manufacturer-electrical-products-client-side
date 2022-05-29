@@ -12,7 +12,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/person?client=${user.email}`, {
+            fetch(`https://obscure-spire-95539.herokuapp.com/person?client=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
