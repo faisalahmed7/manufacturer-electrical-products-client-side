@@ -13,7 +13,7 @@ const Purchase = () => {
 
 
 
-    const { _id, name, image, price, quantity } = product;
+    const { _id, name, price, quantity } = product;
 
 
     useEffect(() => {
@@ -45,10 +45,10 @@ const Purchase = () => {
             toast.error(`Minimum Order 200 pcs`);
             e.target.reset();
         }
-        // else if (inputQuantity > quantity) {
-        //     toast.error(`Maximum  Order not more than available quantity`);
-        //     e.target.reset();
-        // }
+        else if (quantity < inputQuantity) {
+            toast.error(`Maximum  Order not more than available quantity`);
+            e.target.reset();
+        }
 
         else {
             fetch("https://obscure-spire-95539.herokuapp.com/order", {
@@ -61,7 +61,7 @@ const Purchase = () => {
                 .then((res) => res.json())
                 .then((data) => {
 
-                    toast.success("order placed successfully");
+                    toast.success("Your order placed successfully");
                     e.target.reset();
 
 
