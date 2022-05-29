@@ -25,11 +25,9 @@ const ManageProducts = () => {
 
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Avatar</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
+                            <th>Product</th>
+                            <th>Buyer</th>
+                            <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>

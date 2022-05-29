@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import DeleteOrder from './DeleteOrder';
 import ManageAllDetails from './ManageAllDetails';
 
 const ManageallOrders = () => {
+    const [deleteOrder, setDeleteOrder] = useState(null);
     const { data: allOrders, isLoading, refetch } = useQuery('products', () => fetch('https://obscure-spire-95539.herokuapp.com/order', {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -27,7 +29,8 @@ const ManageallOrders = () => {
                         <tr>
                             <th></th>
 
-                            <th>Name</th>
+                            <th>Product Name</th>
+                            <th>Client</th>
                             <th>Quantity</th>
                             <th>Action</th>
                         </tr>
@@ -40,6 +43,7 @@ const ManageallOrders = () => {
                                 order={order}
                                 index={index}
                                 refetch={refetch}
+                                setDeleteOrder={setDeleteOrder}
 
                             >
 
@@ -48,7 +52,13 @@ const ManageallOrders = () => {
                     </tbody>
                 </table>
             </div>
-
+            {deleteOrder && (
+                <DeleteOrder
+                    deleteOrder={deleteOrder}
+                    refetch={refetch}
+                    setDeleteOrder={setDeleteOrder}
+                ></DeleteOrder>
+            )}
         </div>
     );
 };

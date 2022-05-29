@@ -87,7 +87,7 @@ const Purchase = () => {
 
                         <p className='text-justify'>{product.description}</p>
                         <p><span className='text-xl text-bold font-bold text-red-500'>Available Quantity:</span> {product.quantity}</p>
-                        <p><span className='text-xl text-bold font-bold text-red-500'>Price:</span> {product.price} BDT/unit </p>
+                        <p><span className='text-xl text-bold font-bold text-red-500'>Price:</span> ${product.price}  </p>
                         <p><span className='text-xl text-bold font-bold text-red-500'>Minimum Order Quantity:</span> {product.minQuantity}</p>
                     </div>
 
