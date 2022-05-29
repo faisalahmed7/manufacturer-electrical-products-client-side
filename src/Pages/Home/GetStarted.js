@@ -5,7 +5,7 @@ const GetStarted = () => {
     return (
         <div>
             <hr />
-            <h2 className='text-5xl text-center mt-10 mb-8'>Upcoming Products</h2>
+            <h2 className='text-5xl text-center mt-10 mb-8 text-pink-500 font-semibold'>Upcoming Products</h2>
             <div className='my-16'>
                 <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/qYpDjrK/red-banner-coming-soon-web-element-vector-26929889.jpg)' }}>
                     <div className="hero-overlay bg-opacity-60"></div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../Shared/Footer';
 import UpcomingProductDetails from './UpcomingProductDetails';
 
 const UpcominProducts = () => {
@@ -17,7 +18,7 @@ const UpcominProducts = () => {
         <div className='my-6 '>
             <div className='text-center my-8'>
                 <h3 className='text-secondary text-2xl font-bold uppercase'>Our Tools</h3>
-                <h2 className='text-5xl'>Upcoming Product</h2>
+                <h2 className='text-5xl text-pink-500 font-semibold'>Upcoming Product</h2>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
@@ -29,7 +30,7 @@ const UpcominProducts = () => {
                 }
             </div>
 
-
+            <Footer></Footer>
         </div>
     );
 };

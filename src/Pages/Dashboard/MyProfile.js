@@ -17,9 +17,9 @@ const MyProfile = () => {
 
     return (
         <div>
-            <div>
-                <h2>{user.email}</h2>
-                <h2>{user.displayName}</h2>
+            <div className='mb-10'>
+                <h2 className='text-4xl mx-2'>Email: <span className='text-3xl text-secondary font-semibold'>{user.email}</span></h2>
+                <h2 className='text-4xl mx-2'>Name: <span className='text-3xl text-secondary font-semibold'>{user.displayName}</span></h2>
 
             </div>
 

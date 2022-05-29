@@ -111,6 +111,7 @@ const Purchase = () => {
                                 />
                                 <input
                                     type="text"
+                                    required
                                     name="name"
                                     placeholder='Your Name'
                                     className="input mb-2  input-bordered w-full max-w-xs"
@@ -127,6 +128,7 @@ const Purchase = () => {
                                 <input
                                     required
                                     type="text"
+
                                     name="address"
                                     placeholder="Your Address"
                                     className="input mb-2 input-bordered w-full max-w-xs"

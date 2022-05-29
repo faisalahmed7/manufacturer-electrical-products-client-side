@@ -14,7 +14,7 @@ const Products = () => {
         <div className='my-6 '>
             <hr />
             <div className='text-center my-8'>
-                <h3 className='text-secondary text-2xl font-bold uppercase'>Our Tools</h3>
+                <h3 className='text-orange-500 text-5xl font-bold uppercase mb-4'>Our Tools</h3>
                 <h2 className='text-5xl'>Tools We Are Manufacturing</h2>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
