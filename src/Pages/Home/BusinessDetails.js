@@ -39,6 +39,7 @@ const BusinessDetails = () => {
                 </div>
 
             </div>
+            <hr />
         </div>
     );
 };
