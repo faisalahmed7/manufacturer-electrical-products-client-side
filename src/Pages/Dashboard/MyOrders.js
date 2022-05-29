@@ -48,6 +48,7 @@ const MyOrders = () => {
                             <th>Product Name</th>
                             <th>Order Quantity</th>
                             <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,10 @@ const MyOrders = () => {
                                             <p>Transaction id: <span className='text-success'>{order.transactionId}</span></p>
 
                                         </div>}
+                                    </td>
+                                    <td>
+                                        {(!order.paid) && <button>Cancel Order</button>}
+                                        {(order.paid) && <p><span className='text-error'>Already Paid</span></p>}
                                     </td>
                                 </tr>)
                         }

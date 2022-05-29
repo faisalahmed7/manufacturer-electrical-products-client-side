@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Purchase = () => {
     const { id } = useParams()
@@ -13,22 +13,23 @@ const Purchase = () => {
 
 
 
-    const { _id, name, price, quantity } = product;
+    const { _id, name, price, quantity, minQuantity } = product;
 
 
     useEffect(() => {
         const url = `https://obscure-spire-95539.herokuapp.com/product/${id}`
+
         fetch(url)
             .then(res => res.json()
                 .then(data => setProduct(data)))
-    }, [])
+    }, [id])
 
-    let minimumQuantity = 200;
+    // let minimumQuantity = 200;
 
 
     const handleBuyNow = e => {
         e.preventDefault();
-        let inputQuantity = e.target.quantity.value;
+        const inputValue = e.target.inputQuantity.value;
 
 
         const order = {
@@ -37,21 +38,20 @@ const Purchase = () => {
             clientName: user.displayName,
             client: user.email,
             price,
-            quantity: inputQuantity,
+            quantity: inputValue,
             address: e.target.address.value,
             phone: e.target.phone.value,
         };
-        if (inputQuantity < minimumQuantity) {
+        if (inputValue < minQuantity) {
             toast.error(`Minimum Order 200 pcs`);
             e.target.reset();
         }
-        else if (quantity < inputQuantity) {
-            toast.error(`Maximum  Order not more than available quantity`);
-            e.target.reset();
-        }
+
 
         else {
-            fetch("https://obscure-spire-95539.herokuapp.com/order", {
+            const url = 'https://obscure-spire-95539.herokuapp.com/order';
+            console.log(url)
+            fetch(url, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -59,8 +59,8 @@ const Purchase = () => {
                 body: JSON.stringify(order),
             })
                 .then((res) => res.json())
-                .then((data) => {
-
+                .then((result) => {
+                    console.log(result);
                     toast.success("Your order placed successfully");
                     e.target.reset();
 
@@ -107,11 +107,12 @@ const Purchase = () => {
                                     readOnly
                                     disabled
                                     value={product?.name}
-                                    className="input mb-2  input-bordered w-full max-w-xs"
+                                    className="input mb-2  input-bordered w-full max-w-xs font-semibold"
                                 />
                                 <input
                                     type="text"
                                     name="name"
+                                    placeholder='Your Name'
                                     className="input mb-2  input-bordered w-full max-w-xs"
                                 />
                                 <input
@@ -120,16 +121,9 @@ const Purchase = () => {
                                     readOnly
                                     disabled
                                     value={user?.email || ""}
-                                    className="input mb-2  input-bordered w-full max-w-xs"
+                                    className="input mb-2  input-bordered w-full max-w-xs font-semibold"
                                 />
-                                <input
-                                    type="text"
-                                    name="availableQuantity"
-                                    readOnly
-                                    disabled
-                                    value={product?.quantity}
-                                    className="input mb-2  input-bordered w-full max-w-xs"
-                                />
+
                                 <input
                                     required
                                     type="text"
@@ -147,7 +141,7 @@ const Purchase = () => {
                                 <input
                                     required
                                     type="number"
-                                    name="quantity"
+                                    name="inputQuantity"
                                     placeholder=" Your Order Quantity"
                                     className="input mb-2 input-bordered w-full max-w-xs"
                                 />

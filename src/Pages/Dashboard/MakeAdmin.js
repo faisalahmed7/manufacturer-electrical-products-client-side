@@ -23,10 +23,9 @@ const MakeAdmin = () => {
 
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Remove User</th>
+                            <th>No</th>
+                            <th>Email</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
